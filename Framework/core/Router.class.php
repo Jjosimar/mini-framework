@@ -20,8 +20,13 @@ class Router{
     }
 
     public function dispatch(){
+        $urlAct = str_replace("/app/Framework/public/", "", $_SERVER['REQUEST_URI']);
+        $param = explode("/", $urlAct);
+        
+        $controller = $param[0] == "" ? "/" : $param[0];
+
         foreach ($this->routes as $url => $action) {
-            if( $url == $_SERVER['REQUEST_URI'] ){
+            if( $url == $controller){
                 return $action();
             }
         }

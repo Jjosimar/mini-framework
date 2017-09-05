@@ -1,9 +1,13 @@
 <?php
 
-$router->add('/',function() use ($view){
-    $view->display('hello.php');
+$router->add('/',function(){
+    $usuario = new Usuario();
+    $usuario->index();
 });
 
-$router->add('/about-us',function() use ($view){
+//abstrat
+/*
+$router->add('nome',function(){
     $view->display('about.php');
 });
+*/

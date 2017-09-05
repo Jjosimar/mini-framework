@@ -1,19 +1,22 @@
 <?php
-    //echo "hello from my site";
 
-    //require('../views/hello.php');
+    require('../config.php');
+    require('../core/autoload.class.php');
 
-    /*require('../core/view/viewLoader.class.php');
-    require('../core/view/view.class.php');
+
+    $autoLoad = new Autoload();
+    $autoLoad->setPath(ROOT);
+    $autoLoad->setSufix('.class');
+
+    spl_autoload_register(array($autoLoad, 'loadCore'));
+    spl_autoload_register(array($autoLoad, 'loadController'));
+
     
-    $viewPath = __DIR__.'/../views/';
 
-   /* $viewLoader = new ViewLoader($viewPath);
-    $view = new View($viewLoader);
-    
-    $view->display('hello.php');*/
+    $router = new Router();
 
-    require('../bootstrap.php');
     require('../routes.php');
-    
+
     $router->dispatch();
+    
+ 

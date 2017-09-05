@@ -1,6 +1,8 @@
 <?php
 
 class View{
+    
+    private $viewLoader = null;
 
     public function __construct($viewLoader){
         $this->viewLoader = $viewLoader;
